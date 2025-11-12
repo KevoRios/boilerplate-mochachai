@@ -46,10 +46,27 @@ suite('Unit Tests', function () {
     assert.notStrictEqual([1, "a", {}], [1, "a", {}], 'Different arrays are not strictly equal');
   });
     // #7
-    test('#deepEqual, #notDeepEqual', function () {
-      assert.fail({ a: '1', b: 5 }, { b: 5, a: '1' }, "The order of keys doesn't matter");
-      assert.fail({ a: [5, 6] }, { a: [6, 5] }, 'The order of array elements does matter');
-    });
+  test('#deepEqual, #notDeepEqual', function () {
+    assert.fail(
+    { a: "1", b: 5 },
+    { b: 5, a: "1" },
+    "The order of keys doesn't matter"
+  );
+    assert.fail(
+    { a: [1, 2, 3], b: { x: 5 } },
+    { a: [1, 2, 3], b: { x: 5 } },
+    "a and b have the same properties and values"
+  );
+    assert.fail(
+    { a: 1, b: 5 },
+    { a: 1, b: 5, c: 6 },
+    "a and b have different number of properties"
+  );
+    assert.fail(
+    { a: [1, 2], b: 3 },
+    { a: [1, 2, 3], b: 3 },
+    "arrays in a and b are not identical"
+  );
   });
 
   // -----------------------------------------------------------------------------

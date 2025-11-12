@@ -78,10 +78,11 @@ suite('Unit Tests', function () {
   suite('Comparisons', function () {
 /** 8 - .isAbove() => a > b , .isAtMost() => a <= b **/
   test('#isAbove, #isAtMost', function() {
-    assert.isAtMost('hello'.length, 5);
-    assert.isAbove(1, 0);
-    assert.isAbove(Math.PI, 3);
-    assert.isAtMost(1 - Math.random(), 1);
+    assert.isAbove('apple'.length, 3, 'string length is greater than 3');
+    assert.isAtMost(6, 19, '6 is at most 19');
+    assert.isAbove(Math.random() + 1, 1, 'generated number is positive'); // ← ajuste seguro
+    assert.isAtMost(5 % 2, 2, 'remainder of 5/2 is at most 2');
+    assert.isAtMost(2 + 2, 5, 'sum of 2 and 2 is at most 5');
 });
     // #9
     test('#isBelow, #isAtLeast', function () {

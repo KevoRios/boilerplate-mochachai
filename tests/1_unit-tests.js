@@ -76,13 +76,13 @@ suite('Unit Tests', function () {
   }
 
   suite('Comparisons', function () {
-// #8
-test('#isAbove, #isAtMost', function () {
-  assert.isAbove('apple'.length, 3);
-  assert.isAtMost(6, 19);
-  assert.isAbove(1, 0);
-  assert.isAtMost(1, 2);
-  assert.isAtMost(4, 5);
+  // #8
+   test('#isAbove, #isAtMost', function () {
+     assert.isAbove('apple'.length, 3);
+     assert.isAtMost(6, 19);
+     assert.isAbove(1, 0);
+     assert.isAtMost(1, 2);
+     assert.isAtMost(4, 5);
 });
     // #9
     test('#isBelow, #isAtLeast', function () {

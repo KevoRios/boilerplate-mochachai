@@ -39,12 +39,12 @@ suite('Unit Tests', function () {
       assert.fail(6 + '2', '12');
     });
     // #6
-    test('#strictEqual, #notStrictEqual', function () {
-      assert.fail(6, '6');
-      assert.fail(6, 3 * 2);
-      assert.fail(6 * '2', 12);
-      assert.fail([1, 'a', {}], [1, 'a', {}]);
-    });
+  test('#strictEqual, #notStrictEqual', function () {
+    assert.notStrictEqual(6, "6", 'Numbers are not strictly equal to strings');
+    assert.strictEqual(6, 3 * 2, 'These numbers are strictly equal');
+    assert.strictEqual(6 * "2", 12, 'Type coercion not needed with strict equality');
+    assert.notStrictEqual([1, "a", {}], [1, "a", {}], 'Different arrays are not strictly equal');
+  });
     // #7
     test('#deepEqual, #notDeepEqual', function () {
       assert.fail({ a: '1', b: 5 }, { b: 5, a: '1' }, "The order of keys doesn't matter");

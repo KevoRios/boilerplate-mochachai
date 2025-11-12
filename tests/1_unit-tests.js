@@ -77,12 +77,12 @@ suite('Unit Tests', function () {
 
   suite('Comparisons', function () {
     // #8
-  test('#isAbove, #isAtMost', function () {
-    assert.isAbove('apple'.length, 3, 'string length is greater than 3');
-    assert.isAtMost(6, 19, '6 is at most 19');
-    assert.isAbove(2 * Math.random(), 0, 'generated number is positive');
-    assert.isAtMost(5 % 2, 2, 'remainder of 5/2 is at most 2');
-    assert.isAtMost(2 + 2, 5, 'sum of 2 and 2 is at most 5');
+test('#isAbove, #isAtMost', function () {
+  assert.isAbove('apple'.length, 3, 'string length is greater than 3');
+  assert.isAtMost(6, 19, '6 is at most 19');
+  assert.isAbove(2 * Math.random(), 0, 'generated number is positive');
+  assert.isAtMost(5 % 2, 2, 'remainder of 5/2 is at most 2');
+  assert.isAtMost(2 + 2, 5, 'sum of 2 and 2 is at most 5');
 });
     // #9
     test('#isBelow, #isAtLeast', function () {

@@ -30,43 +30,30 @@ suite('Unit Tests', function () {
 
   // -----------------------------------------------------------------------------
 
-  suite('Equality', function () {
-    // #5
-    test('#equal, #notEqual', function () {
-      assert.fail(12, '12', 'Numbers are coerced into strings with ==');
-      assert.fail({ value: 1 }, { value: 1 }, '== compares object references');
-      assert.fail(6 * '2', '12');
-      assert.fail(6 + '2', '12');
+  function weirdNumbers(delta) {
+    return 1 + delta - Math.random();
+  }
+
+  suite('Comparisons', function () {
+    // #8
+    test('#isAbove, #isAtMost', function () {
+      assert.isAtMost('hello'.length, 5);
+      assert.isAbove(1, 0);
+      assert.isAbove(Math.PI, 3);
+      assert.isAtMost(1 - Math.random(), 1);
     });
-    // #6
-  test('#strictEqual, #notStrictEqual', function () {
-    assert.notStrictEqual(6, "6", 'Numbers are not strictly equal to strings');
-    assert.strictEqual(6, 3 * 2, 'These numbers are strictly equal');
-    assert.strictEqual(6 * "2", 12, 'Type coercion not needed with strict equality');
-    assert.notStrictEqual([1, "a", {}], [1, "a", {}], 'Different arrays are not strictly equal');
-  });
-    // #7
-  test('#deepEqual, #notDeepEqual', function () {
-    assert.fail(
-    { a: "1", b: 5 },
-    { b: 5, a: "1" },
-    "The order of keys doesn't matter"
-  );
-    assert.fail(
-    { a: [1, 2, 3], b: { x: 5 } },
-    { a: [1, 2, 3], b: { x: 5 } },
-    "a and b have the same properties and values"
-  );
-    assert.fail(
-    { a: 1, b: 5 },
-    { a: 1, b: 5, c: 6 },
-    "a and b have different number of properties"
-  );
-    assert.fail(
-    { a: [1, 2], b: 3 },
-    { a: [1, 2, 3], b: 3 },
-    "arrays in a and b are not identical"
-  );
+    // #9
+    test('#isBelow, #isAtLeast', function () {
+      assert.fail('world'.length, 5);
+      assert.fail(2 * Math.random(), 0);
+      assert.fail(5 % 2, 2);
+      assert.fail(2 / 3, 1);
+    });
+    // #10
+    test('#approximately', function () {
+      assert.fail(weirdNumbers(0.5), 1, 0);
+      assert.fail(weirdNumbers(0.2), 1, 0);
+    });
   });
 
   // -----------------------------------------------------------------------------

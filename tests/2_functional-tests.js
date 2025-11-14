@@ -75,13 +75,8 @@ test('send {surname: "da Verrazzano"}', function (done) {
       assert.equal(res.body.surname, 'da Verrazzano');
       done();
     });
+}); 
 });
-
-// ⬇️⬇️⬇️ AGREGAR ESTO ⬇️⬇️⬇️
-  }); // cierre del suite('Integration tests with chai-http')
-});   // cierre del suite('Functional Tests')
-// ⬆️⬆️⬆️ SIN ESTO FCC NO CORRE LOS TESTS ⬆️⬆️⬆️
-
 const Browser = require('zombie');
 
 

@@ -62,22 +62,28 @@ suite('Functional Tests', function () {
     // #3
     test('Send {surname: "Colombo"}', ... );
 
-    // #4  ← EL TUYO
-    test('send {surname: "da Verrazzano"}', function (done) {
-      chai
-        .request(server)
-        .put('/travellers')
-        .send({ surname: 'da Verrazzano' })
-        .end(function (err, res) {
-          assert.equal(res.status, 200);
-          assert.equal(res.type, 'application/json');
-          assert.equal(res.body.name, 'Giovanni');
-          assert.equal(res.body.surname, 'da Verrazzano');
-          done();
-        });
+    // #4
+test('send {surname: "da Verrazzano"}', function (done) {
+  chai
+    .request(server)
+    .put('/travellers')
+    .send({ surname: 'da Verrazzano' })
+    .end(function (err, res) {
+      assert.equal(res.status, 200, 'response status should be 200');
+      assert.equal(res.type, 'application/json', 'Response should be json');
+      assert.equal(res.body.name, 'Giovanni');
+      assert.equal(res.body.surname, 'da Verrazzano');
+      done();
     });
+});
+
+// ⬇️⬇️⬇️ AGREGAR ESTO ⬇️⬇️⬇️
+  }); // cierre del suite('Integration tests with chai-http')
+});   // cierre del suite('Functional Tests')
+// ⬆️⬆️⬆️ SIN ESTO FCC NO CORRE LOS TESTS ⬆️⬆️⬆️
 
 const Browser = require('zombie');
+
 
 suite('Functional Tests with Zombie.js', function () {
   this.timeout(5000);

@@ -37,7 +37,6 @@ test('Test GET /hello with your name', function (done) {
 test('Send {surname: "Colombo"}', function (done) {
   chai
     .request(server)
-    .keepOpen()
     .put('/travellers')
     .send({ surname: 'Colombo' })
     .end(function (err, res) {
@@ -45,26 +44,14 @@ test('Send {surname: "Colombo"}', function (done) {
       assert.equal(res.type, 'application/json');
       assert.equal(res.body.name, 'Cristoforo');
       assert.equal(res.body.surname, 'Colombo');
+      
       done();
     });
-    });
-suite('Functional Tests', function () {
-  this.timeout(5000);
 
-  suite('Integration tests with chai-http', function () {
-
-    // #1
-    test('Test GET /hello with no name', ... );
-
-    // #2
-    test('Test GET /hello with your name', ... );
-
-    // #3
-    test('Send {surname: "Colombo"}', ... );
-
+});
     // #4
-test('send {surname: "da Verrazzano"}', function (done) {
-  chai
+    test('send {surname: "da Verrazzano"}', function (done) {
+      chai
     .request(server)
     .put('/travellers')
     .send({ surname: 'da Verrazzano' })

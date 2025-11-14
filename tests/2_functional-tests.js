@@ -70,8 +70,9 @@ suite('Functional Tests', function () {
 
 
 const Browser = require('zombie');
+// Usa tu URL de Render (como tenías)
 Browser.site = 'https://boilerplate-mochachai-2xye.onrender.com';
-
+// En FCC “puro” sería: Browser.site = 'http://0.0.0.0:3000';
 
 suite('Functional Tests with Zombie.js', function () {
   this.timeout(5000);
@@ -83,29 +84,31 @@ suite('Functional Tests with Zombie.js', function () {
   });
 
   suite('Headless browser', function () {
-    test('should have a working "site" property', function() {
+    test('should have a working "site" property', function () {
       assert.isNotNull(browser.site);
     });
   });
   
   suite('"Famous Italian Explorers" form', function () {
+
     // #5
     test('Submit the surname "Colombo" in the HTML form', function (done) {
-  browser
-    .fill('surname', 'Colombo')
-    .then(() => {
-      browser.pressButton('submit', () => {
-        
-        // Aserciones que pide el ejercicio
-        browser.assert.success();
-        browser.assert.text('span#name', 'Cristoforo');
-        browser.assert.text('span#surname', 'Colombo');
-        browser.assert.elements('span#dates', 1);
+      browser
+        .fill('surname', 'Colombo')
+        .then(function () {
+          browser.pressButton('submit', function () {
 
-      done();
-      });
-    });    
-  });
+            browser.assert.success();
+            browser.assert.text('span#name', 'Cristoforo');
+            browser.assert.text('span#surname', 'Colombo');
+            browser.assert.elements('span#dates', 1);
+
+            done();
+          });
+        });
+    });
+
+    // #6
     test('Submit the surname "Vespucci" in the HTML form', function (done) {
       browser
         .fill('surname', 'Vespucci')
@@ -123,3 +126,5 @@ suite('Functional Tests with Zombie.js', function () {
     });
 
   });
+
+});

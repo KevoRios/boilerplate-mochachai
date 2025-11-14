@@ -57,13 +57,12 @@ test('Send {surname: "Colombo"}', function (done) {
         .send({ surname: 'da Verrazzano' })
         .end(function (err, res) {
           assert.equal(res.status, 200);
-          assert.equal(res.type, 'application/json');     // ← clave
+          assert.equal(res.type, 'application/json');   
           assert.equal(res.body.name, 'Giovanni');
           assert.equal(res.body.surname, 'da Verrazzano');
           done();
         });
     });
-  });
 
 const Browser = require('zombie');
 

@@ -63,7 +63,6 @@ test('Send {surname: "da Verrazzano"}', function (done) {
             done();
         });
 });
-});
 
 const Browser = require('zombie');
 

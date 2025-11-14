@@ -48,20 +48,34 @@ test('Send {surname: "Colombo"}', function (done) {
       done();
     });
     });
-    // #4
-test('send {surname: "da Verrazzano"}', function (done) {
-  chai
-    .request(server)
-    .put('/travellers')
-    .send({ surname: 'da Verrazzano' })
-    .end(function (err, res) {
-      assert.equal(res.status, 200, 'response status should be 200');
-      assert.equal(res.type, 'application/json', 'Response should be json');
-      assert.equal(res.body.name, 'Giovanni');
-      assert.equal(res.body.surname, 'da Verrazzano');
-      done();
+suite('Functional Tests', function () {
+  this.timeout(5000);
+
+  suite('Integration tests with chai-http', function () {
+
+    // #1
+    test('Test GET /hello with no name', ... );
+
+    // #2
+    test('Test GET /hello with your name', ... );
+
+    // #3
+    test('Send {surname: "Colombo"}', ... );
+
+    // #4  ← EL TUYO
+    test('send {surname: "da Verrazzano"}', function (done) {
+      chai
+        .request(server)
+        .put('/travellers')
+        .send({ surname: 'da Verrazzano' })
+        .end(function (err, res) {
+          assert.equal(res.status, 200);
+          assert.equal(res.type, 'application/json');
+          assert.equal(res.body.name, 'Giovanni');
+          assert.equal(res.body.surname, 'da Verrazzano');
+          done();
+        });
     });
-});
 });
 
 const Browser = require('zombie');
@@ -76,7 +90,7 @@ suite('Functional Tests with Zombie.js', function () {
       assert.isNotNull(browser.site);
     });
   });
-
+  
   suite('"Famous Italian Explorers" form', function () {
     // #5
     test('Submit the surname "Colombo" in the HTML form', function (done) {
